@@ -1,0 +1,78 @@
+.signup {
+  display: flex;
+  min-height: 600px;
+  background-color: #fff;
+}
+
+.login__hero {
+  width: 40%;
+  padding: 30px;
+  /* height: 100%; */
+  background-color: #2874f0;
+  background-repeat: no-repeat;
+  background-position: center 85%;
+  background-image: url('../../images/login_image.png');
+}
+
+.login__hero h2 {
+  color: #fff;
+  font-weight: 500;
+}
+
+.login__main {
+  width: 60%;
+  position: relative;
+  padding: 40px 30px;
+}
+
+.login__hero p {
+  color: #fff;
+  font-size: 18px;
+  margin-top: 20px;
+  line-height: 26px;
+}
+
+button.login__btn {
+  margin-top: 15px;
+  width: 100%;
+  padding: 15px;
+  color: #fff;
+  background: #fb641b;
+  border: none;
+  outline: none;
+  font-weight: 600;
+  border-radius: 2px;
+  cursor: pointer;
+}
+
+p.policy {
+  color: #878787;
+  font-size: 12px;
+  font-weight: 500;
+  margin-top: 25px;
+}
+
+a.signup-link {
+  position: absolute;
+  bottom: 30px;
+  /* display: block; */
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 13px;
+  font-weight: 600;
+  color: #2874f0;
+}
+
+button.redirect {
+  border: none;
+  padding: 14px;
+  width: 100%;
+  margin-top: 15px;
+  background: #fff;
+  box-shadow: 0 2px 6px rgb(0 0 0 / 20%);
+  cursor: pointer;
+  font-size: 14px;
+  color: #2874f0;
+  border-radius: 2px;
+  font-weight: 600;
+}
