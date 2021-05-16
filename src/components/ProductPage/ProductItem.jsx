@@ -22,18 +22,23 @@ const ProductItem = ({ product }) => {
           justifyContent: 'center',
         }}
       >
-        <img
-          className='product-page__image'
-          src={`${rootImageUrl}${product.images[0]}`}
-          alt=''
-        />
+        <Link to={`/products/detail/${product.slug}`}>
+          <img
+            className='product-page__image'
+            src={`${rootImageUrl}${product.images[0]}`}
+            alt=''
+          />
+        </Link>
       </Grid>
       <Grid item xs={6}>
         <h4 className='product-page__name'>
-          <Link to='/'>{product.title}</Link>
+          <Link to={`/products/detail/${product.slug}`}>{product.title}</Link>
         </h4>
         {/* <div> */}
-        <Link className='product__rating' to='/'>
+        <Link
+          className='product__rating'
+          to={`/products/detail/${product.slug}`}
+        >
           <span className='star'>
             4.3 <StarIcon fontSize='small' />{' '}
           </span>

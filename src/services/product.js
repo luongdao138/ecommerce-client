@@ -20,3 +20,5 @@ export const getProducts = (config) => {
   }
   return axios.get(`/products/${slug}?${queryArray.join('&')}`);
 };
+
+export const getProductBySlug = (slug) => axios.get(`/products/detail/${slug}`);

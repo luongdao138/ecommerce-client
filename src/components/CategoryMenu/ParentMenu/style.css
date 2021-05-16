@@ -22,7 +22,7 @@
 }
 
 .parent-menu__item img {
-  width: 70px;
+  width: 50px;
   object-fit: cover;
 }
 
@@ -52,7 +52,7 @@
   width: 220px;
   opacity: 0;
   visibility: hidden;
-  top: 108px;
+  top: 90px;
   left: -100%;
   z-index: 100;
 }
