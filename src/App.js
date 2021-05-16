@@ -13,6 +13,7 @@ import PrivateRoute from './helpers/PrivateRoute';
 import Profile from './pages/Profile';
 import LoggedInRoute from './helpers/LoggedInRoute';
 import Signup from './pages/Signup';
+import ProductDetail from './pages/ProductDetail';
 
 const App = () => {
   const dispatch = useDispatch();
@@ -42,8 +43,12 @@ const App = () => {
         <CategoryMenu />
         <Switch>
           <Route path='/' component={HomePage} exact />
-          <Route path='/products/:slug' component={ProductListPage} />
-          {/* <Route path='/login' component={Login} /> */}
+          <Route path='/products/:slug' exact component={ProductListPage} />
+          <Route
+            path='/products/detail/:slug'
+            exact
+            component={ProductDetail}
+          />
           <LoggedInRoute
             authenticated={authenticated}
             path='/login'

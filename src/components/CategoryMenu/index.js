@@ -4,9 +4,11 @@ import './style.css';
 
 const CategoryMenu = () => {
   return (
-    <section className='category-menu'>
-      <ParentMenu />
-    </section>
+    <div style={{ height: '90px' }}>
+      <section className='category-menu'>
+        <ParentMenu />
+      </section>
+    </div>
   );
 };
 

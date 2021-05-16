@@ -1,0 +1,38 @@
+.carousel .control-dots li.dot {
+  width: 15px;
+  height: 15px;
+}
+
+.carousel .slide img {
+  height: 285px;
+  object-fit: cover;
+}
+
+.banner__wrapper {
+  padding: 8px;
+}
+
+button.arrow {
+  position: absolute;
+  z-index: 50;
+  top: 50%;
+  transform: translateY(-50%);
+  outline: none;
+  padding: 25px 6px;
+  cursor: pointer;
+}
+
+button.arrow.left {
+  left: 0;
+}
+
+button.arrow-right {
+  position: absolute;
+  z-index: 50;
+  top: 50%;
+  transform: translateY(-50%);
+  right: 0;
+  padding: 25px 6px;
+  outline: none;
+  cursor: pointer;
+}
