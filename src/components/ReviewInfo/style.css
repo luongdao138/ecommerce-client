@@ -1,0 +1,32 @@
+.review-info {
+  background-color: #fff;
+  padding: 20px;
+  height: 100%;
+}
+
+.review-info-img {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 20px;
+}
+
+.review-info-img img {
+  width: 120px;
+  object-fit: contain;
+}
+
+.product-page__name {
+  font-size: 16px;
+}
+
+span.price_bold {
+  font-size: 20px;
+}
+
+span.price_underline {
+  font-size: 14px;
+}
+
+span.price_discount {
+  font-size: 14px;
+}

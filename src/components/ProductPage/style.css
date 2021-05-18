@@ -18,9 +18,10 @@
   flex: 3.5;
 }
 
-.product-page__image {
+.container .product-page__image {
   width: 100px;
-  object-fit: cover;
+  max-height: 200px;
+  object-fit: contain;
 }
 
 .product-page__name {

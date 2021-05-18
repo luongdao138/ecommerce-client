@@ -14,6 +14,7 @@ import Profile from './pages/Profile';
 import LoggedInRoute from './helpers/LoggedInRoute';
 import Signup from './pages/Signup';
 import ProductDetail from './pages/ProductDetail';
+import ProductReviews from './pages/ProductReviews';
 
 const App = () => {
   const dispatch = useDispatch();
@@ -44,6 +45,11 @@ const App = () => {
         <Switch>
           <Route path='/' component={HomePage} exact />
           <Route path='/products/:slug' exact component={ProductListPage} />
+          <Route
+            path='/products/:slug/reviews'
+            exact
+            component={ProductReviews}
+          />
           <Route
             path='/products/detail/:slug'
             exact

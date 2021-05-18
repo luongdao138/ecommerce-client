@@ -1,22 +1,23 @@
 import { Grid } from '@material-ui/core';
 import React, { useEffect, useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import { useParams } from 'react-router-dom';
 import ProductDetailImage from '../components/ProductDetailImage';
 import ProductDetaiInfo from '../components/ProductDetailInfo';
-import { getProductBySlug } from '../services/product';
+import Rating from '../components/Rating';
+import { getData } from '../redux/actions/productDetail';
 
 const ProductDetail = () => {
   const { slug } = useParams();
-  const [product, setProduct] = useState(null);
+  const loading = useSelector((state) => state.productDetail.loading);
+  const ratings = useSelector((state) => state.productDetail.ratings);
+  const product = useSelector((state) => state.productDetail.info);
+  const reviews = useSelector((state) => state.productDetail.reviews);
+  const dispatch = useDispatch();
+  console.log(loading);
   useEffect(() => {
-    getProductBySlug(slug)
-      .then((res) => {
-        setProduct(res.data.product);
-      })
-      .catch((error) => console.log(error));
+    dispatch(getData(slug));
   }, [slug]);
-
-  if (!product) return <p>Loading...</p>;
 
   return (
     <div
@@ -30,7 +31,18 @@ const ProductDetail = () => {
           <ProductDetailImage product={product} />
         </Grid>
         <Grid item xs={8}>
-          <ProductDetaiInfo product={product} />
+          <ProductDetaiInfo
+            product={product}
+            average={ratings?.average}
+            ratingCount={ratings?.total}
+            reviewCount={reviews?.total}
+          />
+          <Rating
+            ratings={ratings}
+            productId={product?._id}
+            reviewCount={reviews?.total}
+            slug={slug}
+          />
         </Grid>
       </Grid>
     </div>

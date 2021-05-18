@@ -119,3 +119,50 @@ p.detail-des {
   font-weight: 400;
   line-height: 24px;
 }
+
+.detail-specs {
+  /* padding: 20px; */
+  margin-top: 30px;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.detail-specs h3 {
+  font-size: 24px;
+  font-weight: 500;
+  padding: 20px;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.spec__item {
+  padding: 20px;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.spec__item h4 {
+  font-size: 16px;
+  font-weight: 500;
+  margin-bottom: 15px;
+}
+
+.spec__item:last-child {
+  border-bottom: none;
+}
+
+.spec__item ul li {
+  display: flex;
+  margin-bottom: 18px;
+}
+
+span.spec_item__title {
+  /* width: 230px; */
+  flex: 1;
+  color: #878787;
+  font-weight: 500;
+  font-size: 14px;
+}
+
+span.spec_item__value {
+  font-size: 14px;
+  flex: 2.5;
+  line-height: 22px;
+}
