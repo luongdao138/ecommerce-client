@@ -2,10 +2,9 @@ import { Grid } from '@material-ui/core';
 import React from 'react';
 import { Link } from 'react-router-dom';
 import StarIcon from '@material-ui/icons/Star';
+import Image from '../../common/Image';
 
 const ProductItem = ({ product }) => {
-  const rootImageUrl = 'http://localhost:5000/uploads/products/';
-
   return (
     <Grid
       container
@@ -23,9 +22,9 @@ const ProductItem = ({ product }) => {
         }}
       >
         <Link to={`/products/detail/${product.slug}`}>
-          <img
+          <Image
             className='product-page__image'
-            src={`${rootImageUrl}${product.images[0]}`}
+            publicId={product.images[0]}
             alt=''
           />
         </Link>
@@ -40,7 +39,7 @@ const ProductItem = ({ product }) => {
           to={`/products/detail/${product.slug}`}
         >
           <span className='star'>
-            4.3 <StarIcon fontSize='small' />{' '}
+            {product.averageRating} <StarIcon fontSize='small' />{' '}
           </span>
           <span className='rating'>
             {product.ratingCount}{' '}
@@ -51,15 +50,9 @@ const ProductItem = ({ product }) => {
         </Link>
         {/* </div> */}
         <ul className='product_hightlights'>
-          <li>4 GB RAM | 64 GB ROM | Expandable Upto 256 GB</li>
-          <li>16.56 cm (6.52 inch) HD+ Display</li>
-          <li>48MP + 8MP + 2MP | 8MP Front Camera</li>
-          <li>6000 mAh Lithium-ion Battery</li>
-          <li>MediaTek Helio G85 Processor</li>
-          <li>
-            Brand Warranty of 1 Year Available for Mobile and 6 Months for
-            Accessories
-          </li>
+          {product.hightlights.map((x, index) => (
+            <li key={index}>{x}</li>
+          ))}
         </ul>
       </Grid>
       <Grid item xs={3}>

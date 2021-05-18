@@ -21,6 +21,13 @@ const initState = {
     loading: false,
     errorMessage: null,
   },
+  productDetail: {
+    info: null,
+    ratings: null,
+    reviews: null,
+    errorMessage: null,
+    loading: false,
+  },
 };
 
 export default initState;

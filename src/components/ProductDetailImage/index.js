@@ -1,22 +1,23 @@
 import './style.css';
 import React, { useEffect, useState } from 'react';
-import { Paper } from '@material-ui/core';
+import Image from '../../common/Image';
 
 const findActiveImage = (slides) =>
   slides.find((slide) => slide.isActive === true)?.img;
 
 const ProductDetailImage = ({ product }) => {
-  const rootImageUrl = 'http://localhost:5000/uploads/products/';
   const [slides, setSlides] = useState([]);
 
   useEffect(() => {
-    setSlides(
-      product.images.map((image, index) => ({
-        img: image,
-        isActive: index === 0 ? true : false,
-      }))
-    );
-  }, [product.images]);
+    if (product) {
+      setSlides(
+        product.images.map((image, index) => ({
+          img: image,
+          isActive: index === 0 ? true : false,
+        }))
+      );
+    }
+  }, [product?.images]);
   console.log(slides);
 
   const handleMouseEnter = (index) => {
@@ -39,8 +40,8 @@ const ProductDetailImage = ({ product }) => {
                 className='thumb_item'
                 onMouseEnter={() => handleMouseEnter(index)}
               >
-                <img
-                  src={`${rootImageUrl}${slide.img}`}
+                <Image
+                  publicId={slide.img}
                   className='thumb_item__img'
                   alt=''
                 />
@@ -51,8 +52,8 @@ const ProductDetailImage = ({ product }) => {
                 className='thumb_item'
                 onMouseEnter={() => handleMouseEnter(index)}
               >
-                <img
-                  src={`${rootImageUrl}${slide.img}`}
+                <Image
+                  publicId={slide.img}
                   className='thumb_item__img'
                   alt=''
                 />
@@ -62,8 +63,8 @@ const ProductDetailImage = ({ product }) => {
         </div>
         <div className='product-image__wrapper__main'>
           {findActiveImage(slides) && (
-            <img
-              src={`${rootImageUrl}${findActiveImage(slides)}`}
+            <Image
+              publicId={findActiveImage(slides)}
               alt=''
               className='main_img'
             />

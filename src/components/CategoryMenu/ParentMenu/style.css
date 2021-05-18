@@ -54,7 +54,7 @@
   visibility: hidden;
   top: 90px;
   left: -100%;
-  z-index: 100;
+  z-index: 1000;
 }
 
 .menu-wrapper:hover > ul {
