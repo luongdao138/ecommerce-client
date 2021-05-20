@@ -59,6 +59,21 @@ function* reviewProduct({ payload }) {
   yield put(actions.removeLoading());
 }
 
+function* createQuestion({ payload }) {
+  yield put(actions.setLoading());
+  try {
+    const res = yield call(services.createQuestion, payload.data);
+    yield put(actions.createQuestionSuccess(res.data.question));
+    payload.cb();
+  } catch (error) {
+    console.log('error', error);
+    if (error.response.status === 401) {
+      yield put(logout());
+    }
+  }
+  yield put(actions.removeLoading());
+}
+
 function* getReviews({ payload }) {
   yield put(actions.setLoading());
   try {
@@ -95,6 +110,54 @@ function* likeReview({ payload }) {
   yield put(actions.removeLoading());
 }
 
+function* answerQuestion({ payload }) {
+  yield put(actions.setLoading());
+  try {
+    const res = yield call(services.answerQuestion, payload.data);
+    yield put(actions.answerQuestionSuccess(res.data.answer));
+    payload.cb();
+  } catch (error) {
+    console.log(error);
+    if (error.response.status === 401) {
+      yield put(logout());
+    }
+  }
+  yield put(actions.removeLoading());
+}
+
+function* likeAnswer({ payload }) {
+  yield put(actions.setLoading());
+  try {
+    const res = yield call(services.likeAnswer, payload.answerId, payload.type);
+    yield put(actions.likeAnswerSuccess(res.data.answer));
+  } catch (error) {
+    console.log(error);
+    if (error.response.status === 401) {
+      yield put(logout());
+    }
+  }
+  yield put(actions.removeLoading());
+}
+
+function* getQuestions({ payload }) {
+  yield put(actions.setLoading());
+  try {
+    const res = yield call(
+      services.getQuestions,
+      payload.slug,
+      payload.limit,
+      payload.skip
+    );
+    yield put(actions.getQuestionsSuccess(res.data));
+  } catch (error) {
+    console.log(error);
+    if (error.response.status === 401) {
+      yield put(logout());
+    }
+  }
+  yield put(actions.removeLoading());
+}
+
 function* watcherGetReviews() {
   yield takeLatest(types.GET_REVIEWS, getReviews);
 }
@@ -115,6 +178,22 @@ function* watcherLikeReview() {
   yield takeLatest(types.LIKE_REVIEW, likeReview);
 }
 
+function* watcherAnswerQuestion() {
+  yield takeLatest(types.ANSWER_QUESTION, answerQuestion);
+}
+
+function* watcherLikeAnswer() {
+  yield takeLatest(types.LIKE_ANSWER, likeAnswer);
+}
+
+function* watcherGetQuestions() {
+  yield takeLatest(types.GET_QUESTIONS, getQuestions);
+}
+
+function* watcherCreateQuestion() {
+  yield takeLatest(types.CREATE_QUESTION, createQuestion);
+}
+
 export default function* productDetailSaga() {
   yield all([
     watcherGetData(),
@@ -122,5 +201,9 @@ export default function* productDetailSaga() {
     watcherReviewProduct(),
     watcherGetReviews(),
     watcherLikeReview(),
+    watcherAnswerQuestion(),
+    watcherLikeAnswer(),
+    watcherGetQuestions(),
+    watcherCreateQuestion(),
   ]);
 }

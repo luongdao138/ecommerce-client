@@ -27,6 +27,7 @@ const initState = {
     reviews: null,
     errorMessage: null,
     loading: false,
+    questions: null,
   },
 };
 

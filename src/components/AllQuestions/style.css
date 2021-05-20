@@ -1,0 +1,14 @@
+.all-questions {
+  background-color: #fff;
+  border-left: 1px solid rgba(0, 0, 0, 0.1);
+  padding: 20px 0;
+}
+
+.load-more-ques-btn {
+  border: none;
+  background-color: transparent;
+  color: #2874f0;
+  font-size: 18px;
+  font-weight: 600;
+  cursor: pointer;
+}

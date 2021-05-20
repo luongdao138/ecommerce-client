@@ -1,0 +1,30 @@
+.question-modal {
+  width: 70vw;
+  padding: 20px;
+}
+
+h4.modal-ques {
+  font-size: 20px;
+  color: #212121;
+  padding-bottom: 20px;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.answer-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 20px 0;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+p.modal-ans {
+  font-size: 14px;
+  font-weight: 500;
+}
+
+span.ans-username {
+  font-size: 14px;
+  font-weight: 500;
+  color: #878787;
+}

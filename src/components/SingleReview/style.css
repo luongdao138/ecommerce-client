@@ -53,3 +53,16 @@ span.review-item-username {
   display: flex;
   align-items: center;
 }
+
+.single-ques-btn {
+  padding: 0 5px;
+  margin-left: 10px;
+  border: none;
+  outline: none;
+  background: transparent;
+  display: flex;
+  cursor: pointer;
+  color: #878787;
+  align-items: center;
+  font-size: 14px;
+}

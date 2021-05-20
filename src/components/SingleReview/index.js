@@ -1,15 +1,17 @@
 import { Avatar } from '@material-ui/core';
-import React from 'react';
+import React, { useState } from 'react';
 import './style.css';
 import ThumbUpAltIcon from '@material-ui/icons/ThumbUpAlt';
 import ThumbDownIcon from '@material-ui/icons/ThumbDown';
 import { useDispatch, useSelector } from 'react-redux';
 import { likeReview } from '../../redux/actions/productDetail';
 import { toast, ToastContainer } from 'react-toastify';
+import moment from 'moment';
 
 const Review = ({ review }) => {
   const dispatch = useDispatch();
   const authenticated = useSelector((state) => state.auth.authenticated);
+
   const handleLikeReview = (reviewId, type) => {
     if (!authenticated) {
       toast.error('You have to login first!');
@@ -35,7 +37,12 @@ const Review = ({ review }) => {
       </div>
       <p className='review-item-content'>{review.content}</p>
       <div className='review-item-footer'>
-        <span className='review-item-username'>{review.userId.username}</span>
+        <span className='review-item-username'>
+          <span style={{ marginRight: '10px' }}>{review.userId.username}</span>
+          <span style={{ marginRight: '10px' }}>
+            {moment(review.createdAt).fromNow()}
+          </span>
+        </span>
         <div>
           <button onClick={() => handleLikeReview(review._id, 'like')}>
             <ThumbUpAltIcon style={{ marginRight: '5px' }} fontSize='small' />

@@ -23,6 +23,10 @@ const productDetailReducer = (state = initState.productDetail, action) => {
           list: action.payload[2].result.reviews,
           total: action.payload[2].result.total,
         },
+        questions: {
+          list: action.payload[3].result.questions,
+          total: action.payload[3].result.total,
+        },
       };
     case types.RATE_PRODUCT_SUCCESS:
       return {
@@ -51,6 +55,14 @@ const productDetailReducer = (state = initState.productDetail, action) => {
           total: action.payload.result.total,
         },
       };
+    case types.GET_QUESTIONS_SUCCESS:
+      return {
+        ...state,
+        questions: {
+          list: action.payload.result.questions,
+          total: action.payload.result.total,
+        },
+      };
     case types.LIKE_REVIEW_SUCCESS:
       return {
         ...state,
@@ -65,6 +77,52 @@ const productDetailReducer = (state = initState.productDetail, action) => {
                 }
               : r
           ),
+        },
+      };
+    case types.ANSWER_QUESTION_SUCCESS:
+      let newListQuestion = [...state.questions.list];
+      newListQuestion = newListQuestion.map((q) => {
+        if (q._id === action.payload.questionId) q.answers.push(action.payload);
+
+        return q;
+      });
+      return {
+        ...state,
+        questions: {
+          ...state.questions,
+          list: newListQuestion,
+        },
+      };
+    case types.LIKE_ANSWER_SUCCESS:
+      let newList2 = [...state.questions.list];
+      newList2 = newList2.map((q) => {
+        if (q._id === action.payload.questionId)
+          q.answers = q.answers.map((a) => {
+            if (a._id === action.payload._id) return action.payload;
+            else return a;
+          });
+
+        return q;
+      });
+      return {
+        ...state,
+        questions: {
+          ...state.questions,
+          list: newList2,
+        },
+      };
+    case types.CREATE_QUESTION_SUCCESS:
+      let newList3 = [...state.questions.list];
+      newList3 =
+        newList3.length <= 2
+          ? newList3
+          : newList3.slice(0, newList3.length - 1);
+
+      return {
+        ...state,
+        questions: {
+          list: [action.payload, ...newList3],
+          total: state.questions.total + 1,
         },
       };
     default:

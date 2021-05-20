@@ -1,0 +1,35 @@
+.detail-questions {
+  background-color: #fff;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.title-wrapper {
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  padding: 20px;
+}
+
+.detail-sections-title {
+  font-weight: 600;
+}
+
+.title-wrapper textarea {
+  width: 100%;
+  padding: 10px 70px 10px 15px;
+  margin-top: 8px;
+  border: 1px solid rgba(0, 0, 0, 0.2);
+  border-radius: 2px;
+  outline: none;
+  font-family: 'Tahoma';
+  height: 70px;
+  resize: none;
+}
+
+.title-wrapper button {
+  padding: 5px 10px;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  background: #2874f0;
+  color: #fff;
+  border-radius: 2px;
+  outline: none;
+  cursor: pointer;
+}

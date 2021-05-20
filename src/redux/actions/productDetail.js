@@ -55,3 +55,35 @@ export const likeReview = (reviewId, type) => {
 export const likeReviewSuccess = (review) => {
   return { type: types.LIKE_REVIEW_SUCCESS, payload: review };
 };
+
+export const answerQuestion = (data, cb) => {
+  return { type: types.ANSWER_QUESTION, payload: { data, cb } };
+};
+
+export const answerQuestionSuccess = (answer) => {
+  return { type: types.ANSWER_QUESTION_SUCCESS, payload: answer };
+};
+
+export const likeAnswer = (answerId, type) => {
+  return { type: types.LIKE_ANSWER, payload: { answerId, type } };
+};
+
+export const likeAnswerSuccess = (data) => {
+  return { type: types.LIKE_ANSWER_SUCCESS, payload: data };
+};
+
+export const getQuestions = (slug, limit, skip) => {
+  return { type: types.GET_QUESTIONS, payload: { slug, skip, limit } };
+};
+
+export const getQuestionsSuccess = (data) => {
+  return { type: types.GET_QUESTIONS_SUCCESS, payload: data };
+};
+
+export const createQuestion = (data, cb) => {
+  return { type: types.CREATE_QUESTION, payload: { data, cb } };
+};
+
+export const createQuestionSuccess = (question) => {
+  return { type: types.CREATE_QUESTION_SUCCESS, payload: question };
+};

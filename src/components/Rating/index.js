@@ -55,9 +55,11 @@ const Rating = ({ slug, ratings, productId, reviewCount }) => {
       <RatingForm open={openRating} productId={productId} />
       <ReviewForm open={openReview} productId={productId} />
       <Reviews />
-      <Link to={`/products/${slug}/reviews`} className='all-review-link'>
-        Views all {reviewCount} reviews
-      </Link>
+      {reviewCount > 0 && (
+        <Link to={`/products/${slug}/reviews`} className='all-review-link'>
+          Views all {reviewCount} reviews
+        </Link>
+      )}
     </div>
   );
 };

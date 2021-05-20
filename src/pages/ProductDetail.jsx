@@ -5,6 +5,7 @@ import { useParams } from 'react-router-dom';
 import ProductDetailImage from '../components/ProductDetailImage';
 import ProductDetaiInfo from '../components/ProductDetailInfo';
 import Rating from '../components/Rating';
+import DetailQuestions from '../components/DetailQuestions';
 import { getData } from '../redux/actions/productDetail';
 
 const ProductDetail = () => {
@@ -13,6 +14,7 @@ const ProductDetail = () => {
   const ratings = useSelector((state) => state.productDetail.ratings);
   const product = useSelector((state) => state.productDetail.info);
   const reviews = useSelector((state) => state.productDetail.reviews);
+  const questions = useSelector((state) => state.productDetail.questions);
   const dispatch = useDispatch();
   console.log(loading);
   useEffect(() => {
@@ -41,6 +43,11 @@ const ProductDetail = () => {
             ratings={ratings}
             productId={product?._id}
             reviewCount={reviews?.total}
+            slug={slug}
+          />
+          <DetailQuestions
+            productId={product?._id}
+            questions={questions}
             slug={slug}
           />
         </Grid>
